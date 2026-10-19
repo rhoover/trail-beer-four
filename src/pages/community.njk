@@ -1,0 +1,57 @@
+---
+# use pagination to create all the one-off pages I will need
+tags: brewersCommunityPages
+pagination:
+  data: brewers
+  size: 1
+  alias: brewer
+  addAllPagesToCollections: true
+layout: layouts/base.njk
+title: VT Brewers - Community
+permalink: "/pages/community/{{ brewer.selector }}/"
+eleventyComputed:
+  title: "{{ brewer.name }} Community"
+---
+
+<section class="topper">
+  <img src="{{brewer.vtbt200 | url}}" alt="{{brewer.name}} logo" class="topper-image" width="200" height="200">
+  <div class="meta">
+    <h2 class="meta-name">{{brewer.name}}</h2>
+    <p class="meta-address">{{brewer.address}}</p>
+    <p class="meta-address">{{brewer.city}}, {{brewer.state}} {{brewer.zip}}</p>
+  </div>
+</section>
+
+<!-- choose your button, see the results below -->
+<buttons-row class="tabs-row" brewer-latitude="{{brewer.latitude}}" brewer-longitude="{{brewer.longitude}}">
+  <button class="tabs-item" source-button="dining">Local Dining</button>
+  <button class="tabs-item" source-button="shopping">Local Shopping</button>
+  <button class="tabs-item" source-button="weather">Local Weather</button>
+</buttons-row>
+
+
+<!-- data-content panels -->
+<panels-row>
+  <dining-panel class="panel" target-panel="dining">
+    <div class="panel-header">
+        <p>Local Dining By:</p>
+      <a href="https://www.yelp.com" target="_blank" rel="noreferrer noopener"><img src="/img/yelp_fullcolor.png" alt="yelp icon" class="panel-header-image" width="100" height="40"></a>
+    </div>
+  </dining-panel>
+
+  <shopping-panel class="panel" target-panel="shopping">
+    <div class="panel-header">
+        <p>Local Shopping By:</p>
+      <a href="https://www.yelp.com" target="_blank" rel="noreferrer noopener"><img src="/img/yelp_fullcolor.png" alt="yelp icon" class="panel-header-image" width="100" height="40"></a>
+    </div>
+  </shopping-panel>
+
+  <weather-panel class="panel" target-panel="weather">
+    <div class="panel-header">
+      <p>Local Weather By:</p>
+      <a href="https://openweathermap.org/" target="_blank" rel="noreferrer noopener"><img src="/img/OpenWeather-Logo-Small.png" alt="open weather map icon" class="panel-header-image" width="75" height="33"></a>
+    </div>
+    <div class="panel-weather-current"></div>
+    <div class="panel-weather-fiveday"></div>
+  </weather-panel>
+</panels-row>

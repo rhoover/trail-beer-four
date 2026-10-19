@@ -1,0 +1,282 @@
+@use "../core" as core;
+@use "../helpers" as helpers;
+@use "../component-helpers" as *;
+
+.list {
+    &-items {
+      @extend %brewers-items;
+    }
+    &-search {
+      @extend %search-section;
+      padding-top: 16px;
+      margin-bottom: 32px;
+      &-label {
+        @extend %search-label;
+        top: -.65rem;
+        color: core.colors(blue, base);
+        background: transparent;
+        font-weight: 700;
+        font-size: var(--step-0);
+      }
+      &-input {
+        @extend %inputs;
+        cursor: pointer;
+        padding-left: 35px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(91, 109, 200)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+        background-position: left 5px center;
+        background-repeat: no-repeat;
+      }
+    }
+    &-item {
+      @extend %brewers-item;
+      // animation on entry
+      // opacity: 0;
+      // animation: fade-in linear forwards;
+      // animation-timeline: view();
+      // animation-range: cover 0% contain 35%;
+      &-summary {
+        width: 100%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        list-style: none;
+        justify-content: space-around;
+        font-size: var(--step-0);
+      }
+      &-logo {
+        @extend %brewers-item-logo;
+      }
+      &-svg {
+        height: 30px;
+        width: 30px;
+        transition: transform 0.5s ease-out;
+      }
+      &-center {
+        padding: 0px 8px;
+      }
+      &-name {
+        @extend %brewers-item-name;
+      }
+      &-city {
+        @extend %brewers-item-city;
+      }
+      &-check {
+        align-self: center;
+        text-align: center;
+      }
+      &-card {
+        @extend %card;
+      }
+      &-address {
+        @extend %card-address;
+      }
+      &-phone {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        @extend %card-link;
+      }
+      &-map {
+        grid-column: 2/3;
+        grid-row: 1/2;
+        @extend %card-link;
+      }
+      &-trail {
+        grid-column: 2/3;
+        grid-row: 2/3;
+        @extend %card-link;
+        & svg {
+          grid-column: 1/2;
+          grid-row: 1/2;
+          height: 25px;
+          width: 25px;
+          margin: 0px 12px 0px 8px;
+          fill: core.colors(blue, base);
+          stroke-width: 2px;
+        }
+        &-text {
+          grid-column: 2/3;
+          grid-row: 1/2;
+        }
+        &-check {
+          display: none;
+          grid-column: 2/3;
+          grid-row: 1/2;
+          justify-self: end;
+          font-size: 3rem;
+          color: core.colors(green, light25);
+          &-selected {
+            display: inline;
+          }
+        }
+      }
+      &-community {
+        grid-column: 1/3;
+        grid-row: 3/4;
+        & a {
+          display: block;
+          width: 100%;
+          border-radius: 8px;
+          padding: 16px 0px;
+          border: 1px solid core.colors(blue, light25);
+          background-color: core.colors(white, light85);
+          cursor: pointer;
+          font-size: var(--step-1);
+          text-align: center;
+          @extend %box-shadow;
+          @extend %animate-helper;
+        }
+      }
+      &-reviews {
+        @extend %brewers-reviews;
+        grid-column: 1/3;
+        grid-row: 4/5;
+        &-svg {
+          height: 30px;
+          width: 30px;
+          transition: transform 0.5s ease-out;
+        }
+      }
+      &-yelp {
+        &-card {
+          display: grid;
+          border: 1px solid core.colors(blue, light25);
+          padding: 8px 8px;
+          border-radius: 8px;
+          margin-bottom: 8px;
+          font-size: var(--step-0);
+          &-rating {
+            display: inline-block;
+            justify-self: right;
+          }
+          &-name {
+            text-decoration: underline;
+            margin-bottom: 8px;
+          }
+        }
+        &-spinner {
+          margin: 8px auto;
+          width: 60px;
+          height: 60px;
+          border: 2px solid #f3f3f3;
+          border-top: 2px solid #3498db;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        }
+      }
+      &-thirdparty {
+        grid-column: 1 / 3;
+        grid-row: 5/6;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        padding: 16px;
+        cursor: pointer;
+        &-share {
+          display: none;
+          &-visible {
+            display: block;
+            height: 32px;
+            width: 32px;
+          }
+        }
+        & a {
+          height: 32px;
+          width: 32px;
+          & svg {
+            height: 32px;
+            width: 32px;
+          }
+        }
+        & p {
+          height: 32px;
+          width: 32px;
+          & svg {
+            height: 32px;
+            width: 32px;
+          }
+        }
+      }
+      &-moosedog {
+        @extend %brewers-item;
+        display: grid;
+        &-logo {
+          align-self: center;
+          justify-self: center;
+        }
+        &-promo {
+          align-self: center;
+          text-align: center;
+        }
+        &-link {
+          align-self: center;
+          justify-self: center;
+          font-size: 1.7rem;
+        }
+      }
+    }
+}
+
+.modal {
+    // @extend %modal;
+    @extend %dialog;
+    display: grid;
+    row-gap: 8px;
+    @include helpers.tablet-breakpoint {
+      grid-column: 2 / 4;
+      width: 55vw;
+    }
+    &-image {
+      @extend %modal-image;
+    }
+    &-congrats {
+      @extend %modal-congrats;
+    }
+    &-text {
+      @extend %modal-text;
+      &:nth-of-type(2) {
+        grid-row: 2 / 3;
+      }
+      &:nth-of-type(3) {
+        grid-row: 3 / 4;
+      }
+    }
+    &-link {
+      @extend %card-link;
+      grid-column: 1/4;
+      justify-self: center;
+      font-size: var(--step-1);
+    }
+    &-icon {
+      @extend %modal-icon;
+    }
+    &-open {
+      @extend %modal-open;
+    }
+  }
+
+.selected {
+  opacity: 1;
+}
+.is-hidden {
+  display: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  @extend %cancel-search;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hidden { display: none; }
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

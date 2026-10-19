@@ -1,0 +1,38 @@
+@use "../core" as core;
+@use "../helpers" as helpers;
+@use "../component-helpers" as components;
+
+// modifyong stuff in %side-button
+.scroller {
+  @extend %side-button;
+  display: block;
+  left: calc(100vw - 60px);
+  border-radius: 30% 0% 0% 30%;
+  border-right: none;
+  border-left: 1px solid core.colors(blue, dark25);
+  @extend %animate-helper;
+  animation: show-scroll-button;
+  animation-timeline: scroll();
+  animation-range: 0 300px;
+  animation-fill-mode: forwards;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 14px;
+    left: 19px;
+    transform: rotate(45deg);
+    background: transparent;
+    border-top: 5px solid core.colors(white, light35);
+    border-left: 5px solid core.colors(white, light35);
+  }
+  & p {
+    left: 18px;
+  }
+}
+
+@keyframes show-scroll-button {
+  from{opacity: 0;}
+  to{opacity: 1;}
+}

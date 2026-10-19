@@ -1,0 +1,10 @@
+%panel {
+  display: none;
+  &-active {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: max-content;
+    gap: 24px;
+    margin-bottom: 96px;
+  }
+}

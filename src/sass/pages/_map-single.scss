@@ -1,0 +1,62 @@
+@use "../component-helpers" as components;
+@use "../core" as core;
+
+.map-detail { 
+  // margin-top: 5rem;
+  // this has to be here so google maps has a height to inherit, won't inherit min-height
+  height: calc(100vh - 112px);
+}
+
+#map {
+  @extend %maps;
+  // margin-top: 16px;
+  height: 75vh;
+}
+
+// select only immediate parent
+div:has(> .infowindow-image) {
+  display: grid;
+  column-gap: 8px;
+}
+.infowindow {
+  &-image {
+    grid-column: 1/2;
+    grid-row: 1/4;
+  }
+  &-name {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    font-weight: 700;
+  }
+  &-address {
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
+  &-city {
+    grid-column: 2/3;
+    grid-row: 3/4;
+  }
+  &-link {
+    grid-column: 2/3;
+    grid-row: 4/5;
+  }
+}
+
+// google shit
+.gm-ui-hover-effect>span {
+  background-color: red;
+  width: 40px !important;
+  height: 40px !important;
+  margin: 0px !important;
+  opacity: 1;
+}
+
+.gm-style .gm-style-iw-c {
+  border: 1px solid core.colors(blue, base);
+  padding: 8px !important;
+}
+
+.gm-style-iw-chr {
+  background: core.colors(blue, light75);
+  margin: -8px -8px 8px -8px;
+}

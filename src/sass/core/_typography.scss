@@ -1,0 +1,25 @@
+
+@font-face {
+  font-family: "assistant";
+  src: local("assistant"), url("/fonts/assistantLight.woff") format("woff");
+  font-display: swap;
+}
+
+/* @link https://utopia.fyi/type/calculator?c=360,18,1.333,1140,26,1.2,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+  --step--2: clamp(0.6331rem, 0.4045rem + 1.0161vw, 1.1285rem);
+  --step--1: clamp(0.844rem, 0.6085rem + 1.0466vw, 1.3542rem);
+  // p etc
+  --step-0: clamp(1.125rem, 0.8942rem + 1.0256vw, 1.625rem);
+  //h5
+  --step-1: clamp(1.4996rem, 1.2918rem + 0.9238vw, 1.95rem);
+  //h4
+  --step-2: clamp(1.999rem, 1.8416rem + 0.6995vw, 2.34rem);
+  //h3
+  --step-3: clamp(2.6647rem, 2.5985rem + 0.294vw, 2.808rem);
+  //h2
+  --step-4: clamp(3.3696rem, 3.6362rem + -0.3742vw, 3.552rem);
+  //h1
+  --step-5: clamp(4.0435rem, 5.0539rem + -1.418vw, 4.7348rem);
+}

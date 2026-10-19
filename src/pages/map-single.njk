@@ -1,0 +1,15 @@
+---
+# use pagination to create all the one-off pages I will need
+tags: brewerLocationPages
+pagination:
+  data: brewers
+  size: 1
+  alias: brewerLocation
+  addAllPagesToCollections: true
+permalink: "/pages/map/{{ brewerLocation.selector }}/"
+layout: layouts/base.njk
+eleventyComputed:
+  title: "Location - {{ brewerLocation.name }}"
+---
+
+<section id="map"></section>

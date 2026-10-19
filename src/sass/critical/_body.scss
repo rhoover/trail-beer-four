@@ -1,0 +1,73 @@
+@use "../core" as core;
+
+@view-transition {
+  navigation: auto;
+}
+
+body {
+  background: core.colors(white, light55);
+  font-family: "assistant", sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+  color: core.colors(black, dark25);
+  min-height: 100vh;
+  --pseudo-color: rgba(0,0,250,0.95);
+}
+
+a {
+  color: core.colors(green, dark15);
+  font-weight: 700;
+}
+
+
+
+// tweaked from: https://developer.chrome.com/docs/web-platform/view-transitions/same-document
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+// @keyframes slide-from-right {
+//   from { transform: translateX(430px); }
+// }
+
+// @keyframes slide-to-left {
+//   to { transform: translateX(-430px); }
+// }
+
+::view-transition-old(root) {
+  animation: 1000ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
+    // 1950ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
+
+::view-transition-new(root) {
+  animation: 1500ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in;
+    // 1750ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+}
+
+// https://webkit.org/blog/17101/a-guide-to-scroll-driven-animations-with-just-css/
+body::after {
+  content: "";
+  height: 10px;
+  width: 100%;
+  background: var(--pseudo-color);
+  inset-inline-start: 0;
+  top: 0;
+  position: fixed;
+  transform-origin: top left;
+  animation: grow-progress linear;
+  animation-timeline: scroll();
+}
+@keyframes grow-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+:root {
+  interpolate-size: allow-keywords;
+}
+

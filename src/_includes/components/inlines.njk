@@ -1,0 +1,215 @@
+  {#########################################}
+  {# Back Button #}
+  {#########################################}
+  {% set js %}
+    {% include "../../js/inline/backbutton.js" %}
+  {% endset %}
+  <!-- back button behavior -->
+  <script>
+    {{ js | jsmin | safe }}
+  </script>
+
+  {#########################################}
+  {# Menu Button #}
+  {#########################################}
+  {% set js %}
+    {% include "../../js/inline/menubutton.js" %}
+  {% endset %}
+  <!-- menu button behavior -->
+  <script>
+    {{ js | jsmin | safe }}
+  </script>
+  
+  {#########################################}
+  {# Share Side Button #}
+  {#########################################}
+  {% set js %}
+    {% include "../../js/inline/share-side-button.js" %}
+  {% endset %}
+  <!-- share button behavior -->
+  <script>
+    {{ js | jsmin | safe }}
+  </script>
+
+  {#########################################}
+  {# Scroll Button #}
+  {#########################################}
+  {% set js %}
+    {% include "../../js/inline/scroll-top.js" %}
+  {% endset %}
+  <!-- scroll button behavior -->
+  <script>
+    {{ js | jsmin | safe }}
+  </script>
+
+  {#########################################}
+  {# Progress Bar #}
+  {#########################################}
+  {% set js %}
+    {% include "../../js/inline/progress-bar.js" %}
+  {% endset %}
+  <!-- progress bar behavior -->
+  <script>
+    {{ js | jsmin | safe }}
+  </script>
+
+  {#########################################}
+  {# Home Page Search Behavior #}
+  {#########################################}
+  {% if page.fileSlug == '' %}
+    <!-- search behavior for home -->
+    {% set js %}
+      {% include "../../js/inline/search-home.js" %}
+    {% endset %}
+    <script type="module">
+      {{ js | jsmin | safe }}
+    </script>
+  {% endif %}
+
+  {#########################################}
+  {# All Map Page Behavior #}
+  {#########################################}
+  {% if page.fileSlug == 'map-all' %}
+    <!-- google maps herself must speak on the matter -->
+    <script>
+      (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+        key: "AIzaSyBEBOmZu2tJSCVLk9CoPUQFU10EnFyBv9M",
+        v: "weekly",
+        // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+        // Add other bootstrap parameters as needed, using camel case.
+      });
+    </script>
+    <!-- local forage package-->
+    <script src="{{ '/js/packages/localforage.min.js' | url }}"></script>
+    <!-- local forage config -->
+    {% set js %}
+      {% include "../../js/inline/localForage-config.js" %}
+    {% endset %}
+    <script>
+      {{ js | jsmin | safe }}
+    </script>
+    <!-- map of all behavior -->
+    {% set js %}
+      {% include "../../js/inline/map-all.js" %}
+    {% endset %}
+    <script type="module">
+      {{ js | jsmin | safe }}
+    </script>
+  {% endif %}
+
+  {#########################################}
+  {# Trail Page #}
+  {#########################################}
+
+  {% if page.fileSlug == 'trail' %}
+    <!-- indexed DB solution for off-line storage of trail building -->
+    <script src="{{ '/js/packages/localforage.min.js' | url }}"></script>
+    <!-- local forage config -->
+    {% set js %}
+      {% include "../../js/inline/localForage-config.js" %}
+    {% endset %}
+    <script>
+      {{ js | jsmin | safe }}
+    </script>
+    <!-- UI behaviors for trail -->
+    {% set js %}
+      {% include "../../js/inline/trail-ui.js" %}
+    {% endset %}
+    <script>
+      {{ js | jsmin | safe }}
+    </script>
+    <!-- trail building behaviors for trail -->
+    {% set js %}
+      {% include "../../js/inline/trail-build.js" %}
+    {% endset %}
+    <script type="module">
+      {{ js | jsmin | safe }}
+    </script>
+    <!-- google maps herself must speak on the matter -->
+    <script>
+      (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+        key: "AIzaSyBEBOmZu2tJSCVLk9CoPUQFU10EnFyBv9M",
+        v: "weekly",
+        // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+        // Add other bootstrap parameters as needed, using camel case.
+      });
+    </script>
+    <!-- map behavior for trail -->
+    {% set js %}
+      {% include "../../js/inline/trail-map.js" %}
+    {% endset %}
+    <script>
+      {{ js | jsmin | safe }}
+    </script>
+  {% endif %}
+  
+  {#########################################}
+  {# Single Map Page #}
+  {#########################################}
+  {% if (page.fileSlug == 'map-single') %}
+    <!-- google maps herself must speak on the matter -->
+    <script>
+      (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+        key: "AIzaSyBEBOmZu2tJSCVLk9CoPUQFU10EnFyBv9M",
+        v: "weekly",
+        // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+        // Add other bootstrap parameters as needed, using camel case.
+      });
+    </script>
+    <!-- detail map behavior -->
+    {% set js %}
+      {% include "../../js/inline/map-single.js" %}
+    {% endset %}
+    <script>
+      {{ js | jsmin | safe }}
+    </script>
+  {% endif %}
+
+  {#########################################}
+  {# Community Page #}
+  {#########################################}
+  {% if page.fileSlug == 'community' %}
+    <!-- community page behavior -->
+    {% set js %}
+      {% include "../../js/inline/community.js" %}
+    {% endset %}
+    <script>
+      {{ js | jsmin | safe }}
+    </script>
+  {% endif %}
+
+  {#########################################}
+  {# List Page #}
+  {#########################################}
+  {% if page.fileSlug == 'list' %}
+    {% set js %}
+      {% include "../../js/inline/search-list.js" %}
+    {% endset %}
+    <!-- search through list page behavior -->
+    <script>
+      {{ js | jsmin | safe }}
+    </script>
+    {% set js %}
+      {% include "../../js/inline/yelp-reviews.js" %}
+    {% endset %}
+    <!-- Yelp search behavior -->
+    <script>
+      {{ js | jsmin | safe }}
+    </script>
+    <!-- local forage package-->
+    <script src="{{ '/js/packages/localforage.min.js' | url }}"></script>
+    {% set js %}
+      {% include "../../js/inline/localForage-config.js" %}
+    {% endset %}
+    <!-- local forage config -->
+    <script>
+      {{ js | jsmin | safe }}
+    </script>
+    {% set js %}
+      {% include "../../js/inline/list-trail.js" %}
+    {% endset %}
+    <!-- add to trail behavior -->
+    <script>
+      {{ js | jsmin | safe }}
+    </script>
+  {% endif %}

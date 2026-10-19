@@ -1,0 +1,50 @@
+---
+layout: layouts/base.njk
+title: Your Beer Trail
+permalink: "/pages/brewers-trail.html"
+---
+
+<section class="trail-tabs-row" data-section="tab-row">
+  <button  class="trail-tabs-item trail-tabs-item-active" data-source="list">All Brewers</button >
+  <button class="trail-tabs-item" data-source="trail">Your Trail</button >
+  <button  class="trail-tabs-item" data-source="map">Trail Map</button >
+</section>
+
+<section data-section="panels">
+
+  <div class="trail-panel trail-panel-active" data-target="list">
+
+    <div class="trail-list-search">
+      <label for="searchbox" class="trail-list-search-label">
+        Search By Brewer Name Or Town
+      </label>
+      <input type="search" id="searchbox" class="trail-list-search-input">
+    </div>
+    
+    {% for brewer in brewers | sort(attribute="selector") %}
+
+      <div class="trail-list-item" data-brewer="{{brewer.selector}}" id="{{brewer.selector}}">
+        <span class="trail-list-item-logo {{brewer.selector}}"></span>
+        <div class="trail-list-item-meta">
+          <p  class="trail-list-item-name">{{ brewer.name }}</p>
+          <p class="trail-list-item-city">{{ brewer.city }}</p>
+        </div>
+        <div class="trail-list-item-action">
+          <span class="trail-list-item-check">&#10003;</span>
+          <span class="trail-list-item-add">&#43;</span>
+        </div>
+      </div>
+
+    {% endfor %}
+
+    <div class="trail-list-item-moosedog ">
+      <div class="trail-list-item-moosedog-logo moosedog"></div>
+      <p class="trail-list-item-moosedog-promo">VT Beer Trail is artisanally handcrafted in Stowe, Vermont by:</p>
+      <a class="trail-list-item-moosedog-link" href="https://moosedog.io" target="_blank">MooseDog Studios</a>
+    </div>
+  </div>
+
+  <div class="trail-panel" data-target="trail"></div>
+  <div class="trail-panel" id="map" data-target="map"></div>
+  
+</section>

@@ -1,0 +1,50 @@
+@use "../core" as core;
+@use "../helpers" as helpers;
+
+%search-section {
+  position: relative;
+  // background-color: core.colors(white, base);
+}
+
+%search-label {
+  position: absolute;
+  top: 4px;
+  width: max-content;
+  background: core.colors(white, base);
+}
+
+%search-svg {
+  position: absolute;
+  right: -2.25rem;
+  top: -4px;
+  fill: core.colors(blue, light25);
+  height: 24px;
+  width: 24px;
+}
+
+%inputs {
+  font-size: 2rem;
+  line-height: 3.5rem;
+  width: 100%;
+  padding-left: 16px;
+  background: transparent;
+  border-radius: 16px;
+  border: 1px solid core.colors(blue, base);
+  color: inherit;
+}
+
+%button-shadow {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+%cancel-search {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 40px;
+  width: 40px;
+  margin-left: 8px;
+  stroke-width: 1px;
+  stroke-linecap: round;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='red'><path d='M202.829 197.172a4 4 0 1 1-5.658 5.656L128 133.658l-69.171 69.17a4 4 0 0 1-5.658-5.656L122.343 128 53.171 58.828a4 4 0 0 1 5.658-5.656L128 122.342l69.171-69.17a4 4 0 0 1 5.658 5.656L133.657 128Z'/></svg>");
+  cursor: pointer;
+}

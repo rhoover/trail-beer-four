@@ -1,0 +1,134 @@
+@use "../core" as core;
+@use "../helpers" as helpers;
+
+%brewers-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-rows: max-content;
+  grid-gap: 24px;
+  align-items: start;
+  // margin-bottom: 164px;
+  height: min-content;
+}
+
+
+%brewers-item {
+  padding: 8px 8px;
+  border-radius: 8px;
+  border: 1px solid core.colors(blue, light25);
+  background-color: core.colors(white, light75);
+  cursor: pointer;
+  text-decoration: none;
+  @extend %box-shadow;
+  @extend %animate-helper;
+  &::details-content {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.35s ease, content-visibility 0.5s ease allow-discrete;
+  }
+  &[open]::details-content {
+    height: auto;
+  }
+  &[open] {
+    background-color: core.colors(white, light75);
+    & .list-item-svg {
+      transform: rotate(180deg);
+    }
+    & .list-item-card {
+      border-top: 1px solid core.colors(blue, light25);
+    }
+  }
+  // &:hover {
+  //     background-color: rgba(core.colors(blue, base), 0.15);
+  // }
+  &-logo {
+    align-self: center;
+    // display: inline-block;
+  }
+  &-name {
+    align-self: center;
+    color: core.colors(blue, base);
+    // responsive scales too big
+    font-size: var(--step-0);
+    font-weight: 700;
+    text-align: center;
+  }
+  &-city {
+    align-self: center;
+    font-size: var(--step-0);
+    font-weight: 400;
+    color: core.colors(black, light25);
+    text-align: center;
+  }
+}
+
+%brewers-reviews {
+  padding: 8px 8px;
+  border-radius: 8px;
+  border: 1px solid core.colors(blue, light25);
+  background-color: core.colors(white, light75);
+  cursor: pointer;
+  text-decoration: none;
+  @extend %box-shadow;
+  @extend %animate-helper;
+  &::details-content {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.35s ease, content-visibility 0.5s ease allow-discrete;
+  }
+  &[open]::details-content {
+    height: auto;
+  }
+  &[open] {
+    background-color: core.colors(white, light75);
+    & .list-item-reviews-svg {
+      transform: rotate(180deg);
+    }
+    & .list-item-yelp {
+      border-top: 1px solid core.colors(blue, light25);
+      padding-top: 16px;
+    }
+  }
+}
+
+%card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: max-content max-content max-content max-content auto;
+  row-gap: 16px;
+  column-gap: 8px;
+  align-items: start;
+  padding-top: 8px;
+  font-size: var(--step--1);
+}
+
+%card-address {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  align-content: center;
+  font-weight: 700;
+}
+
+%card-link {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid core.colors(blue, light25);
+  background-color: core.colors(white, light85);
+  cursor: pointer;
+  font-size: var(--step--1);
+  @extend %box-shadow;
+  @extend %animate-helper;
+  & svg {
+    height: 25px;
+    width: 25px;
+    margin: 0px 12px 0px 8px;
+    fill: core.colors(blue, base);
+    stroke-width: 2px;
+  }
+  & a {
+    font-size: var(--step--1);
+  }
+}

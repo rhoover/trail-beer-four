@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>{{ title }}</title>
+
+    <link rel="preload" href="/fonts/assistantLight.woff" as="font" type="font/woff" crossorigin="anonymous">
+    
+    <!-- Service Worker Initialize -->
+    {% if projectEnv.environment == "build" %}
+      {% set js %}
+        {% include "../../js/inline/brewers-sw-register.js" %}
+      {% endset %}
+      <script>
+        {{ js | jsmin | safe }}
+      </script>
+    {% endif %}
+
+    <!-- Community Page JSON -->
+    {% if (page.fileSlug == 'community') %}
+      <script id="detailData" type="application/json">
+        {{ brewer | stringFromArtisanObject | safe }}
+      </script>
+    {% endif %}
+
+    <!-- Single Map Page JSON-->
+    {% if (page.fileSlug == 'map-single') %}
+      <script id="detailData" type="application/json">
+        {{ brewerLocation | stringFromArtisanObject | safe }}
+      </script>
+    {% endif %}
+
+    <!-- Critical Styles -->
+    {% set critical %}
+      {% include "../../critical/critical.css" %}
+    {% endset %}
+    <style>
+      {{ critical | safe }}
+    </style>
+
+    <!-- Normal Styles -->
+    {% if page.fileSlug == '' %}
+      <link rel="stylesheet" type="text/css" href="{{ "/css/home.css" | rev }}" media="tty" onload="this.media='screen'"/>
+    {% else %}
+    {# This is how to concatenate strings with Nunjucks, join stuff in an array #}
+      {% set cssName = ['/css/', page.fileSlug, '.css'] | join %}
+      {# each stylesheet has its own name #}
+      <link rel="stylesheet" type="text/css" href="{{ cssName | rev }}" media="tty" onload="this.media='screen'"/>
+    {% endif %}
+
+    <meta name="description" content="A Comprehensive Mobile Reference and Directory of Vermont's Brewers and Their Communities" />
+
+    <!-- Apple Tags-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Viva Eleventy -->
+    <meta name="generator" content="{{ eleventy.generator }}" />
+
+    <!-- Chrome for Android And Apple Tool Bar Color -->
+    <meta name="theme-color" content="#5b6dc8" />
+
+    <!-- Facebook -->
+    <meta property="og:url" content="https://vtbeertrail.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="VT Brewers" />
+    <meta property="og:image" content="https://vtbeertrail.com/img/trail-sign.png" />
+    <meta property="og:description" content="A Comprehensive Mobile Reference and Directory of Vermont's Brewers and Their Communities" />
+    <meta property="og:site_name" content="Vermont Beer Trail" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- The Essential Links -->
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="author" href="http://www.moosedog.io" />
+    {% if projectEnv.environment == "serve" %}
+      <link rel="canonical" href="http://localhost:8080{{ page.url }}" />
+    {% else %}
+      <link rel="canonical" href="https://vtbeertrail.com{{ page.url }}" /> 
+    {% endif %}
+    
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Apple Icon Links -->
+    <link href='https://vtbeertrail.com/img/artisan-icns/apple-icon.png' rel='apple-touch-icon' type='image/png' />
+    <link href='https://vtbeertrail.com/img/artisan-icns/apple-icon-72x72.png' rel='apple-touch-icon' sizes='72x72' />
+    <link href='https://vtbeertrail.com/img/artisan-icns/apple-icon-114x114.png' rel='apple-touch-icon' sizes='114x114' />
+    <link href='https://vtbeertrail.com/img/artisan-icns/apple-icon-152x152.png' rel='apple-touch-icon' sizes='152x152' />
+    <link href='https://vtbeertrail.com/img/trail-sign.png' rel='apple-touch-startup-image' />
+
+    <!-- JSON-LD Structured Data -->
+    {% schemaDataShortCode meta %}
+
+  </head>

@@ -1,0 +1,55 @@
+---
+eleventyComputed:
+  meta:
+    "@context": "https://schema.org"
+    "@type": "WebSite"
+    "name": "Vermont Beer Trail"
+    "about": "A Comprehensive Mobile Reference of Vermont's Brewers and Their Communities"
+    "url": "https://vtbeertrail.com{{ page.url }}"
+    "mainEntityOfPage": "https://vtbeertrail.com/"
+    "screenshot": "https://vtbeertrail.com/img/vermont-beertrail-screenshot.png"
+    "audience": "Lifestyle Tourism Food"
+    "inLanguage": "en-US"
+    "isAccessibleForFree": "true"
+    "datePublished": "{{ page.date | dateFormat }}"
+    "logo":
+      "@type": "ImageObject"
+      "url": "https://vtbeertrail.com/img/trail-sign.png"
+    "publisher":
+      "@type": "Organization"
+      "@id": "https://vtbeertrail.com/#publisher"
+      "name": "Moosedog Studios"
+      "description": "Creating Custom Web Sites and Web Apps: Made in Vermont"
+      "url": "https://moosedog.io"
+      "email": "robin@moosedog.io"
+      "logo":
+        "@type": "ImageObject"
+        "url": "https://vtbeertrail.com/img/moosedog-logo.png"
+      "contactPoint":
+        "@type": "ContactPoint"
+        "@id": "https://vtbeertrail.com/#contactpoint"
+        "name": "Robin Hoover"
+        "email": "robin@moosedog.io"
+        "telephone": "+18026962455"
+        "contactType": "Web Developer"
+---
+
+    {% include 'components/head-element.njk' %}
+
+    <body>
+      {% include "components/header.njk" %}
+      {% include "components/nav.njk" %}
+
+      <main class="{{ page.fileSlug or 'home' }}" >
+
+        {{ content | safe }}
+
+      </main>
+
+        {% include "components/scroll-button.njk" %}
+        {% include "components/share-button.njk" %}
+
+        {% include "components/inlines.njk" %}
+        
+    </body>
+  </html>

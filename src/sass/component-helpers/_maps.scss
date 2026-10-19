@@ -1,0 +1,6 @@
+@use "../core" as core;
+
+%maps {
+  border: 1px solid core.colors(blue, base);
+  border-radius: 8px;
+}
