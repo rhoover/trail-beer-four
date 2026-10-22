@@ -124,7 +124,7 @@
         justify-self: center;
         align-self: center;
         opacity: 0;
-        font-size: 4rem;
+        font-size: 3rem;
         color: core.colors(green, light25);
         &-selected {
           opacity: 1;
@@ -135,7 +135,7 @@
         align-items: center;
         justify-self: center;
         color: core.colors(green, base);
-        font-size: 4rem;
+        font-size: 3rem;
       }
       &-no-add {
         opacity: 0;
