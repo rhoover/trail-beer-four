@@ -15,6 +15,7 @@ import { sassOptions } from "./src/_eleventy/utilities/sassCompileOptions.js";
 import { htmlMinifier } from "./src/_eleventy/utilities/minify-html.js";
 import { getServiceWorkerData } from "./src/_eleventy/utilities/serviceWorkerData.js";
 
+// to get the Google Maps key off Github
 import dotenv from 'dotenv';
 import path from 'path';
 dotenv.config({ path: path.resolve(process.cwd(), 'googlemaps.env.local') });
