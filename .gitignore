@@ -8,7 +8,7 @@ package.json
 # artisans-service-worker-min.js
 
 # local env files
-.env.local
+*.env.local
 .env.*.local
 
 # Log files
